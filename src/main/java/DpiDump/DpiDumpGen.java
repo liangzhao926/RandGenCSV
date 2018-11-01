@@ -21,17 +21,26 @@ public class DpiDumpGen {
 		this.outputFilePath = outputFilePath;
 	}
 
-	public int gen() {
+	public int gen(String appFilePath, String appProtoFilePath) {
 		RandomCollection<String> mapApp = CsvLoader.load(appFilePath);
+		RandomCollection<String> mapAppProto = CsvLoader.load(appProtoFilePath);
 		
-		List<String> list = new LinkedList<String>();
-		for (int i = 0 ; i < 10; i++) {
-			String str = mapApp.next();
-			System.out.println(str);
-			list.add(str);
+		
+		List<Record> list = new LinkedList<Record>();
+		for (int i = 0 ; i < 10000; i++) {
+			Record rec = new Record();
+			rec.setAppName(mapApp.next());
+			rec.setAppProto(mapAppProto.next());
+			//System.out.println(str);
+			list.add(rec);
 		}
 		
-		CsvDumper.dump(list, "./dpi-dump.csv");
+		try {
+			CsvDumper dumper = new CsvDumper();
+			dumper.dump(list, "./dpi-dump.csv");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
         return 0;
     }
 }

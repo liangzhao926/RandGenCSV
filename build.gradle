@@ -28,6 +28,12 @@ dependencies {
 	// compile group: 'org.apache.commons', name: 'commons-csv', version: '1.7'
 	compile group: 'org.apache.commons', name: 'commons-csv', version: '1.+'
 	
+	// https://mvnrepository.com/artifact/com.mounacheikhna.jsongenerator/jsongenerator
+	compile group: 'com.mounacheikhna.jsongenerator', name: 'jsongenerator', version: '0.5'
+	
+	// https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-csv
+	compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-csv', version: '2.9.+'
+	
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation 'com.google.guava:guava:23.0'
 

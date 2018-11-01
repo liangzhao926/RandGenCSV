@@ -17,6 +17,10 @@ public class Config {
 		String fileName = "app.csv";
 		return getComonFilePath()+fileName;
 	}
+	public static String getAppProtoFilePath() {
+		String fileName = "app-proto.csv";
+		return getComonFilePath()+fileName;
+	}
 	public static String getOutputFilePath() {
 		String fileName = "dpi-dump.csv";
 		return getComonFilePath()+fileName;

@@ -1,0 +1,23 @@
+{
+"imsiImei" : "460010000000000",
+"appProto" : "app-proto-string",
+"appName" : "app-name-string",
+"appAttributes":
+[
+  "appAttributesString1",
+  "appAttributesString2"
+],
+"appGrps" :
+[
+  "appGrpsString1",
+  "appGrpsString2"
+],
+"uplinkPkt" : 10,
+"uplinkBytes" : 1000,
+"downlinkPkt" : 10,
+"downlinkBytes" : 1000,
+"isTetheringDetected" : true,
+"url" : "http://123.com",
+"destinationIpAddress":"22.22.22.22",
+"destinationPort" : 24
+}

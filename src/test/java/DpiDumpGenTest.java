@@ -12,14 +12,17 @@ public class DpiDumpGenTest {
     @Test public void testSomeLibraryMethod() {
         DpiDumpGen gen = new DpiDumpGen();
         
+        /*
         String appFilePath = Config.getAppFilePath();
         gen.setAppFilePath(appFilePath);
         
         String outputFilePath = Config.getOutputFilePath();
         gen.setOutputFilePath(outputFilePath);
+        */
         
-        assertTrue("gen should return 0", gen.gen()==0);
+        assertTrue("gen should return 0", 
+        		gen.gen(Config.getAppFilePath(), Config.getAppProtoFilePath())==0);
         
-        System.out.printf("Dumping into %s\n", outputFilePath);
+        //System.out.printf("Dumping into %s\n", outputFilePath);
     }
 }
