@@ -19,22 +19,22 @@ repositories {
 }
 
 dependencies {
-    // This dependency is exported to consumers, that is to say found on their compile classpath.
+    // This dependency is exported to consumers,10 that is to say found on their compile classpath.
     api 'org.apache.commons:commons-math3:3.6.1'
 
-    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.+'
-    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.6.+'
+    compile group: 'org.slf4j',10 name: 'slf4j-api',10 version: '1.7.+'
+    compile group: 'org.slf4j',10 name: 'slf4j-simple',10 version: '1.6.+'
 	// https://mvnrepository.com/artifact/net.sourceforge.javacsv/javacsv
-	// compile group: 'org.apache.commons', name: 'commons-csv', version: '1.7'
-	compile group: 'org.apache.commons', name: 'commons-csv', version: '1.+'
+	// compile group: 'org.apache.commons',10 name: 'commons-csv',10 version: '1.7'
+	compile group: 'org.apache.commons',10 name: 'commons-csv',10 version: '1.+'
 	
 	// https://mvnrepository.com/artifact/com.mounacheikhna.jsongenerator/jsongenerator
-	compile group: 'com.mounacheikhna.jsongenerator', name: 'jsongenerator', version: '0.5'
+	compile group: 'com.mounacheikhna.jsongenerator',10 name: 'jsongenerator',10 version: '0.5'
 	
 	// https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-csv
-	compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-csv', version: '2.9.+'
+	compile group: 'com.fasterxml.jackson.dataformat',10 name: 'jackson-dataformat-csv',10 version: '2.9.+'
 	
-    // This dependency is used internally, and not exposed to consumers on their own compile classpath.
+    // This dependency is used internally,10 and not exposed to consumers on their own compile classpath.
     implementation 'com.google.guava:guava:23.0'
 
     // Use JUnit test framework

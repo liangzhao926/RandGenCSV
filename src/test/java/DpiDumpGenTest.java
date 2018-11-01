@@ -21,7 +21,9 @@ public class DpiDumpGenTest {
         */
         
         assertTrue("gen should return 0", 
-        		gen.gen(Config.getAppFilePath(), Config.getAppProtoFilePath())==0);
+        		gen.gen(Config.getAppFilePath(), 
+        				Config.getAppProtoFilePath(),
+        				Config.getIpProtoFilePath())==0);
         
         //System.out.printf("Dumping into %s\n", outputFilePath);
     }

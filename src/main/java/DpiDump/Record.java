@@ -6,7 +6,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 //@JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonPropertyOrder(value = { "imsiImei", "appName", "appProto" })
+@JsonPropertyOrder({ 
+	"imsiImei", 
+	"appName", 
+	"appProto"
+	})
 public class Record
 {
 	/*
@@ -43,21 +47,20 @@ public class Record
 
     private String destinationIpAddress;
 
-    private String downlinkPkt;
 
-    private String destinationPort;
+    private Integer destinationPort;
 
-    private String uplinkPkt;
 
     private String[] appGrps;
 
     private String appProto;
 
     private String url="http://123.com";
-
-    private String downlinkBytes;
-
-    private String uplinkBytes;
+            
+    private Integer downlinkPkt = 0;
+    private Integer downlinkBytes = 0;
+    private Integer uplinkPkt = 0;
+    private Integer uplinkBytes = 0;
 
     private String[] appAttributes;
 
@@ -101,32 +104,32 @@ public class Record
         this.destinationIpAddress = destinationIpAddress;
     }
 
-    public String getDownlinkPkt ()
+    public int getDownlinkPkt ()
     {
         return downlinkPkt;
     }
 
-    public void setDownlinkPkt (String downlinkPkt)
+    public void setDownlinkPkt (Integer downlinkPkt)
     {
         this.downlinkPkt = downlinkPkt;
     }
 
-    public String getDestinationPort ()
+    public Integer getDestinationPort ()
     {
         return destinationPort;
     }
 
-    public void setDestinationPort (String destinationPort)
+    public void setDestinationPort (Integer destinationPort)
     {
         this.destinationPort = destinationPort;
     }
 
-    public String getUplinkPkt ()
+    public Integer getUplinkPkt ()
     {
         return uplinkPkt;
     }
 
-    public void setUplinkPkt (String uplinkPkt)
+    public void setUplinkPkt (Integer uplinkPkt)
     {
         this.uplinkPkt = uplinkPkt;
     }
@@ -161,22 +164,22 @@ public class Record
         this.url = url;
     }
 
-    public String getDownlinkBytes ()
+    public Integer getDownlinkBytes ()
     {
         return downlinkBytes;
     }
 
-    public void setDownlinkBytes (String downlinkBytes)
+    public void setDownlinkBytes (Integer downlinkBytes)
     {
         this.downlinkBytes = downlinkBytes;
     }
 
-    public String getUplinkBytes ()
+    public Integer getUplinkBytes ()
     {
         return uplinkBytes;
     }
 
-    public void setUplinkBytes (String uplinkBytes)
+    public void setUplinkBytes (Integer uplinkBytes)
     {
         this.uplinkBytes = uplinkBytes;
     }
@@ -194,7 +197,7 @@ public class Record
     @Override
     public String toString()
     {
-        return "[appName = "+appName+", isTetheringDetected = "+isTetheringDetected+", imsiImei = "+imsiImei+", destinationIpAddress = "+destinationIpAddress+", downlinkPkt = "+downlinkPkt+", destinationPort = "+destinationPort+", uplinkPkt = "+uplinkPkt+", appGrps = "+appGrps+", appProto = "+appProto+", url = "+url+", downlinkBytes = "+downlinkBytes+", uplinkBytes = "+uplinkBytes+", appAttributes = "+appAttributes+"]";
+        return "[appName = "+appName+", isTetheringDetected = "+isTetheringDetected+", imsiImei = "+imsiImei+", destinationIpAddress = "+destinationIpAddress+", downlinkPkt = "+downlinkPkt+", destinationPort = "+destinationPort+", uplinkPkt = "+uplinkPkt+", appGrps = "+appGrps+", appProto = "+appProto+", url = "+url+", downlinkBytes = "+downlinkBytes+", uplinkBytes = "+uplinkBytes.toString()+", appAttributes = "+appAttributes+"]";
     }
 
 }
