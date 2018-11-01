@@ -1,4 +1,8 @@
 package DpiDump;
+import java.util.LinkedList;
+import java.util.List;
+
+import Common.CsvDumper;
 import Common.CsvLoader;
 import Common.RandomCollection;
 
@@ -20,9 +24,14 @@ public class DpiDumpGen {
 	public int gen() {
 		RandomCollection<String> mapApp = CsvLoader.load(appFilePath);
 		
+		List<String> list = new LinkedList<String>();
 		for (int i = 0 ; i < 10; i++) {
-			System.out.println(mapApp.next());
+			String str = mapApp.next();
+			System.out.println(str);
+			list.add(str);
 		}
+		
+		CsvDumper.dump(list, "./dpi-dump.csv");
         return 0;
     }
 }
