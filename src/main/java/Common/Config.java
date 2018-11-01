@@ -1,5 +1,6 @@
 package Common;
 
+
 public class Config {
 
 	public static String getComonFilePath() {
@@ -19,5 +20,10 @@ public class Config {
 	public static String getOutputFilePath() {
 		String fileName = "dpi-dump.csv";
 		return getComonFilePath()+fileName;
+	}
+	
+	public static String[] getSelectedColumnNames() {
+		String [] names = {"name", "weight"}; 
+		return names;
 	}
 }

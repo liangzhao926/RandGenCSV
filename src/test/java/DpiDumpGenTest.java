@@ -4,6 +4,7 @@
 import org.junit.Test;
 
 import Common.Config;
+import DpiDump.DpiDumpGen;
 
 import static org.junit.Assert.*;
 
