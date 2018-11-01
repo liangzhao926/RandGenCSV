@@ -1,66 +1,42 @@
 package Common;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.nio.charset.Charset;
-import java.util.Arrays;
-import java.util.List;
-
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.Reader;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.csvreader.CsvReader;
 
 public class CsvLoader {
 	private static Logger log = LoggerFactory.getLogger(CsvLoader.class);
 	
 	public static RandomCollection<String> load(String filePath) {
-		
+
+		Reader in;
 		try {
-			File file = new File(filePath);
-			if(!file.exists()){
-				log.error("{} is not found", filePath);
+			in = new FileReader(filePath);
+		} catch (FileNotFoundException e) {
+			log.error("{} is not found", filePath);
+			return null;
+		}
+		try {
+			if (!in.ready()){
+				log.error("cannot read {}", filePath);
+				in.close();
 				return null;
 			}
-			FileInputStream in = new FileInputStream(file);
-			CsvReader csv = new CsvReader(in, Charset.forName("UTF-8"));
-			if (!csv.readHeaders()) {
-				log.error("failed to read from {}", filePath);
-				return null;
-			}
-			List<String> headers = Arrays.asList(csv.getHeaders());
-			/* too few to justify any sorting
-			Collections.sort(headers);
-			*/
-			String[] selected = Config.getSelectedColumnNames();
-			int [] colIndex = {-1,-1};
-			
-			for (int i = 0; i < selected.length; i++) {
-				if (headers.contains(selected[i])) {
-					colIndex[i] = i;
-					log.info("Column {} for {}", i, selected[i]);
-					
-				}
-			}
-			/*
-			for (int i = 0; i < csv.getHeaderCount(); i++) {
-				if (fieldNames.contains(headers[i])) {
-					Pair pair = new Pair(i, headers[i]);
-					readHeaders.add(pair);
-					log.info("Column {} for {}", i, headers[i]);
-				}
-			}
-			*/
-				
+			Iterable<CSVRecord> records = CSVFormat.RFC4180.withHeader().parse(in);
 			RandomCollection<String> map = new RandomCollection<String>();
-			while (csv.readRecord()) {
-				map.add(
-						csv.get(colIndex[0]),
-						Double.valueOf(csv.get(colIndex[1])));
+			for (CSVRecord record : records) {
+				map.add(record.get(0), Double.valueOf(record.get(1))); 
 			}
+			in.close();
 			return map;
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
 		}
 		return null;
 	}
