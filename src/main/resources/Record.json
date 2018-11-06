@@ -1,23 +1,34 @@
 {
-"imsiImei" : "460010000000000",
-"appProto" : "app-proto-string",
-"appName" : "app-name-string",
-"appAttributes":
-[
-  "appAttributesString1",
-  "appAttributesString2"
-],
-"appGrps" :
-[
-  "appGrpsString1",
-  "appGrpsString2"
-],
-"uplinkPkt" : 10,
-"uplinkBytes" : 1000,
-"downlinkPkt" : 10,
-"downlinkBytes" : 1000,
-"isTetheringDetected" : true,
-"url" : "http://123.com",
-"destinationIpAddress":"22.22.22.22",
-"destinationPort" : 24
+	"appProto": "app-proto-string",
+	"appName": "app-name-string",
+	"appAttributes": [
+		"appAttributesString1",
+		"appAttributesString2"
+	],
+	"appGrps": [
+		"appGrpsString1",
+		"appGrpsString2"
+	],
+	"uplinkPkt": 10,
+	"uplinkBytes": 1000,
+	"downlinkPkt": 10,
+	"downlinkBytes": 1000,
+	"isTetheringDetected": true,
+	"url": "http://123.com",
+	"destinationIpAddress": "22.22.22.22",
+	"destinationPort": 24,
+	"userImsi": "IMSI",
+	"userImei": "",
+    "nwApn": "",
+    "nwChargingCharacteristics": "1231432",
+    "nwRatType": "EUTRAN",
+    "nwMcc": "460",
+    "nwMnc": "01",
+    "nwLac": 1,
+    "nwCi": 23,
+    "nwSac": 23,
+    "nwRac": 23,
+    "nwTac": 23,
+    "nwEci": 23,
+	"ratingGroup": 8
 }

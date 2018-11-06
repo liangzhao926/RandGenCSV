@@ -57,11 +57,49 @@ public class RandUtils {
 		}
 		return builder.toString();
 	}
+
+	private static final String [] DOMAIN_NAME_EXT = {
+			".com",
+			".org",
+			".net",
+			".us",
+			".co",
+			".io",
+			".biz" ,
+			".info" ,
+			".jobs" ,
+			".mobi" ,
+			".name" ,
+			".ly" ,
+			".tel" ,
+			".kitchen" ,
+			".email" ,
+			".tech" ,
+			".estate" ,
+			".xyz" ,
+			".codes" ,
+			".bargains" ,
+			".bid" ,
+			".expert"	,	
+	};
+	public static String nextDomainNameExt() {
+		int index = (int)(Math.random()*DOMAIN_NAME_EXT.length);
+		return DOMAIN_NAME_EXT[index];
+	}
 	
 	public static String nextDomainName(int numSegs) {
-		String domainName = nextWord(nextInt(3,18));
+		String domainName = nextWord(nextInt(3,5));
 		while(numSegs-- >=0) {
 			domainName += "."+nextWord(nextInt(3,18));
+		}
+		domainName += nextDomainNameExt();
+		return domainName;
+	}
+	
+	public static String nextApn(int numSegs) {
+		String domainName = nextWord(nextInt(3,5));
+		while(numSegs-- >=0) {
+			domainName += "."+nextWord(nextInt(3,5));
 		}
 		return domainName;
 	}
@@ -86,4 +124,12 @@ public class RandUtils {
 	public static boolean nextBoolean() {
 		return rand.nextBoolean();
 	}
+	
+	private static final String [] RAT = {"GERAN", "UTRAN", "EUTRAN", "WIMAX", "WIFI"};
+	public static String nextRat() {
+		int index = (int)(Math.random()*RAT.length);
+		return RAT[index];
+	}
+	
+	
 }

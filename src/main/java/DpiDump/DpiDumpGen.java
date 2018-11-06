@@ -21,7 +21,20 @@ public class DpiDumpGen {
 		for (int i = 0 ; i < 10000; i++) {
 			Record rec = new Record();
 			
-			rec.setImsiImei(RandUtils.nextIntString(15));
+			rec.setUserImsi(RandUtils.nextIntString(15));
+			rec.setUserImei(RandUtils.nextIntString(15));
+			       
+			rec.setNwApn(RandUtils.nextDomainName(RandUtils.nextInt(2,4)));
+			rec.setNwChargingCharacteristics(RandUtils.nextIntString(12));
+			rec.setNwRatType(RandUtils.nextRat());
+			rec.setNwMcc(RandUtils.nextIntString(3));
+			rec.setNwMnc(RandUtils.nextIntString(3));
+			rec.setNwCi(RandUtils.nextIntString(2));
+			rec.setNwEci(RandUtils.nextIntString(3));
+			rec.setNwLac(RandUtils.nextIntString(3));
+			rec.setNwSac(RandUtils.nextIntString(3));
+			rec.setNwRac(RandUtils.nextIntString(3));
+			rec.setNwTac(RandUtils.nextIntString(5));
 			
 			rec.setAppName(mapApp.next());
 			rec.setAppProto(mapAppProto.next());
