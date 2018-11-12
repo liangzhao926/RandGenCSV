@@ -218,6 +218,12 @@ public class Record
         this.userImei = userImei;
     }
 
+    public void setNwMccMnc(String nwMccMnc) {
+    	String[] parts = nwMccMnc.split("-", 2);
+    	setNwMcc(parts[0]);
+    	setNwMnc(parts[1]);
+    }
+    
     public String getNwMcc ()
     {
         return nwMcc;
