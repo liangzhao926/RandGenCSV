@@ -5,7 +5,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 //@JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonPropertyOrder({ 
+@JsonPropertyOrder({
+	"timeStamp",
+	"duration",
 	"userImsi",
 	"userImei",
 	"nwApn",
@@ -24,6 +26,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 	})
 public class Record
 {
+	String timeStamp;
+	int    duration;
+	
     private String appName;
 
     private String isTetheringDetected = "true";
@@ -78,7 +83,23 @@ public class Record
     
     private String ratingGroup;
     
-    public String getAppName ()
+    public String getTimeStamp() {
+		return timeStamp;
+	}
+
+	public void setTimeStamp(String timeStamp) {
+		this.timeStamp = timeStamp;
+	}
+
+	public int getDuration() {
+		return duration;
+	}
+
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
+
+	public String getAppName ()
     {
         return appName;
     }

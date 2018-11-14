@@ -50,10 +50,17 @@ public class DpiDumpGen {
 			rec.setDestinationIpAddress(RandUtils.nextIpv4());
 			rec.setDestinationPort(RandUtils.nextInt(0,65535));
 			
-			rec.setDownlinkBytes(RandUtils.nextNormal());
-			rec.setDownlinkPkt(RandUtils.nextNormal());
-			rec.setUplinkBytes(RandUtils.nextNormal());
-			rec.setUplinkPkt(RandUtils.nextNormal());
+			rec.setTimeStamp(RandUtils.nextTimestamp());
+			int duration = RandUtils.nextExp(15*1000, 0, 1*60*60*1000);
+			rec.setDuration(duration);
+			
+			int tput = RandUtils.nextNormal(300.0*1000, 100.0*1000, 10.0*1000, 12000.0*1000); // byte per second
+			int bytes = tput*duration/1000;
+			rec.setDownlinkBytes(bytes);
+			rec.setDownlinkPkt(bytes/512);
+			bytes /= RandUtils.nextInt(21,25)/10; // dl/ul ratio is about 2.3
+			rec.setUplinkBytes(bytes);
+			rec.setUplinkPkt(bytes/256);
 			
 			rec.setIsTetheringDetected(RandUtils.nextBoolean()?"true":"false");
 			

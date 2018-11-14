@@ -1,5 +1,11 @@
 package Common;
 
+import java.time.Duration;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Random;
 
 public class RandUtils {
@@ -8,16 +14,38 @@ public class RandUtils {
 	private static final Double mean = 4000.0;
 	private static final Double std = 4000.0;
 	
-	public static Integer nextNormal() {
+	public static Integer nextNormal(Double mean, Double std, Double min, Double max) {
 		Double r = rand.nextGaussian();
 		r *= std;
 		r += mean;
-		if (r < min) {
+		if (min != null && r < min) {
 			r = min;
+		} else if (max != null && r >max){
+			r = max;
 		}
 		return r.intValue();
 	}
+	public static Integer nextNormal(int mean, int std, int min, int max) {
+		return nextNormal((double)mean,
+				(double)std,
+				(double)min,
+				(double)max);
+				
+	}
 	
+	public static Integer nextExp(double beta, int min, int max) {
+		Double lambda = 1/beta;
+	    Double r =  Math.log(1-rand.nextDouble())/(-lambda);
+	    int retInt = r.intValue();
+		if (retInt < min) {
+			retInt = min;
+		} else if (retInt > max) {
+			retInt = max;
+		}
+		return retInt;
+	}
+
+	//including max
 	public static int nextInt(int min, int max) { 
 		 
         // Usually this can be a field rather than a method variable 
@@ -123,6 +151,28 @@ public class RandUtils {
 	
 	public static boolean nextBoolean() {
 		return rand.nextBoolean();
+	}
+	
+	protected static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter
+			.ofPattern("yyyy-MM-dd HH:mm:ss")
+			.withZone(ZoneId.systemDefault());
+
+	public static String nextTimestamp() {
+        GregorianCalendar gc = new GregorianCalendar();
+
+        int year = nextInt(2016, 2018);
+
+        gc.set(Calendar.YEAR, year);
+
+        int dayOfYear = nextInt(1, gc.getActualMaximum(Calendar.DAY_OF_YEAR));
+
+        gc.set(Calendar.DAY_OF_YEAR, dayOfYear);
+        
+        Instant ins = gc.toInstant();
+        int seconds = RandUtils.nextNormal(21*60*60, 2*60*60, 0, 24*60*60-1); // use 9pm as mean
+        ins = ins.plusSeconds(seconds);
+        return DATE_TIME_FORMATTER.format(ins);
+
 	}
 	
 	private static final String [] RAT = {"GERAN", "UTRAN", "EUTRAN", "WIMAX", "WIFI"};
