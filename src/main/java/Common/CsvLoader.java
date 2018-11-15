@@ -1,7 +1,6 @@
 package Common;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.io.Reader;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
@@ -14,14 +13,7 @@ public class CsvLoader {
 	
 	public static RandomCollection<String> load(String filePath) {
 
-		Reader in;
-		try {
-			in = new FileReader(filePath);
-		} catch (FileNotFoundException e) {
-			log.error("{} is not found", filePath);
-			return null;
-		}
-		try {
+		try (Reader in = new InputStreamReader(RandomCollection.class.getClassLoader().getResourceAsStream(filePath))){
 			if (!in.ready()){
 				log.error("cannot read {}", filePath);
 				in.close();

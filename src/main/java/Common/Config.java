@@ -8,35 +8,17 @@ public class Config {
 	
 	public static final int USERS_PER_MNC = 10;
 	
-	public static String getComonFilePath() {
-		String path = Thread.currentThread().getContextClassLoader().getResource("").toString();
-		if (path.contains("WEB-INF")) {// for Tomcat environment
-			path = path.replace("file:", "");
-		} else {// for Eclipse environment
-			path = "src/main/resources/";
-		}
-		return path;
-	}
-	
 	public static String getAppFilePath() {
-		String fileName = "app.csv";
-		return getComonFilePath()+fileName;
+		return "app.csv";
 	}
 	public static String getAppProtoFilePath() {
-		String fileName = "app-proto.csv";
-		return getComonFilePath()+fileName;
+		return "app-proto.csv";
 	}
 	public static String getIpProtoFilePath() {
-		String fileName = "ip-proto.csv";
-		return getComonFilePath()+fileName;
+		return "ip-proto.csv";
 	}
 	public static String getMccMncFilePath() {
-		String fileName = "mcc-mnc.csv";
-		return getComonFilePath()+fileName;
-	}
-	public static String getOutputFilePath() {
-		String fileName = "dpi-dump.csv";
-		return getComonFilePath()+fileName;
+		return "mcc-mnc.csv";
 	}
 	
 	public static String[] getSelectedColumnNames() {
