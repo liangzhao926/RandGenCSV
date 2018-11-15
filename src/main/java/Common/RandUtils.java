@@ -1,6 +1,5 @@
 package Common;
 
-import java.time.Duration;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -10,9 +9,6 @@ import java.util.Random;
 
 public class RandUtils {
 	static Random rand = new Random();
-	private static final Double min = 103.5;
-	private static final Double mean = 4000.0;
-	private static final Double std = 4000.0;
 	
 	public static Integer nextNormal(Double mean, Double std, Double min, Double max) {
 		Double r = rand.nextGaussian();
